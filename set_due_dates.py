@@ -25,8 +25,7 @@ if __name__ == "__main__":
     #         break
     
     # print(f'Routines board id: {board_id}')
-    routine_board = TrelloUtilities.find_board_by_name('Python Test Board')
-    TrelloUtilities.print_response(routine_board)
+    routine_board = TrelloUtilities.find_board_by_name('Routines')
 
 
     # # get lists from board
