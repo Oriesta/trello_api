@@ -2,6 +2,7 @@ import json
 from datetime import datetime
 import pytz
 import TrelloMembers
+import TrelloBoards
 
 def get_secrets():
 
@@ -57,6 +58,22 @@ def find_board_by_name(name):
     
     if 'requested_board' in locals():
         return requested_board
+
+def get_list_in_board(board_id, list_name):
+
+    # load authentication parameters
+    # secrets = json.load(f)
+    key, token = get_secrets()
+
+    lists = TrelloBoards.get_lists_from_board(key, token, board_id)
+
+    for list in lists:
+        if list['name'] == list_name:
+            requested_list = list
+            today_list_id = list['id']
+            break
+
+    return requested_list
 
 def print_response(obj):
 
