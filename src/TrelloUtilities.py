@@ -1,17 +1,34 @@
 import json
+
+'''
 from datetime import datetime
 import pytz
 import TrelloMembers
 import TrelloBoards
+'''
 
+class Credentials():
+
+    key = ''
+    token = ''
+
+    def __init__(self):
+
+        # open secrets.json to get key and token
+        if self.key == '' or self.token == '':
+            with open("../config/secrets.json", "r") as secrets_file:
+
+                secrets = json.load(secrets_file)
+                self.key = secrets['key']
+                self.token = secrets['token']
+
+'''
 def get_secrets():
 
     # open secrets.json to get key and token
     with open("config/secrets.json", "r") as secrets_file:
 
         secrets = json.load(secrets_file)
-    
-    secrets_file.close()
 
     return secrets['key'], secrets['token']
 
@@ -79,3 +96,10 @@ def print_response(obj):
 
     print(json.dumps(obj, sort_keys=True, indent=4, separators=(",", ": ")))
     
+'''
+
+if __name__ == '__main__':
+
+    credentials = Credentials()
+    print(f'Key = {credentials.key}')
+    print(f'Token =  {credentials.token}')
