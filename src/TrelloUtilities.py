@@ -23,15 +23,6 @@ class Credentials():
                 self.token = secrets['token']
 
 '''
-def get_secrets():
-
-    # open secrets.json to get key and token
-    with open("config/secrets.json", "r") as secrets_file:
-
-        secrets = json.load(secrets_file)
-
-    return secrets['key'], secrets['token']
-
 def get_user_id():
 
     # open secrets.json to get key and token
