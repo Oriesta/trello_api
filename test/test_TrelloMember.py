@@ -1,7 +1,11 @@
 from ..src.TrelloMember import Member
 
+'''
+Function: test_GetMember
 
-# def test_GetMember():
-#     member = Member()
-#     assert member.data != None
-#     assert member.data['username'] == 'patrickfreel'
+Purpose: This function is meant to be called by pytest and verifies the ability to 
+instantiate a Member object and initializes it from a Trello Member request
+'''
+def test_GetMember():
+    member = Member()
+    assert member.initialized == True
