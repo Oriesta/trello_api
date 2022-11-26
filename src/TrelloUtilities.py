@@ -19,9 +19,10 @@ class Credentials():
         if self.key == '' or self.token == '':
             with open("/home/oriesta/repos/trello_api/config/secrets.json", "r") as secrets_file:
 
-                secrets = json.load(secrets_file)
-                self.key = secrets['key']
-                self.token = secrets['token']
+                self.__dict__.update(json.load(secrets_file))
+                # secrets = json.load(secrets_file)
+                # self.key = secrets['key']
+                # self.token = secrets['token']
 
 class Settings():
 
@@ -35,30 +36,9 @@ class Settings():
         # TODO: Update this to use relative paths
         with open("/home/oriesta/repos/trello_api/config/settings.json", "r") as settings_file:
 
-            # Current working code.  Remove once you automatically convert json string
-            # settings = json.load(settings_file)
-            # self.userId = settings['user_id']
-
-
             self.__dict__.update(json.load(settings_file))
 
-
-
-
-    
-
 '''
-def get_user_id():
-
-    # open secrets.json to get key and token
-    with open("config/settings.json", "r") as settings_file:
-
-        settings = json.load(settings_file)
-    
-    settings_file.close()
-
-    return settings['user_id']
-        
 def get_creation_date_from_id(id):
 
     # for trello items that have unique ids, the first 8 characters of the 

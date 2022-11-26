@@ -21,4 +21,8 @@ def test_getCredentials():
 def test_getSettings():
     settings = TrelloUtilities.Settings()
     assert hasattr(settings, 'userId')
-    
+    # assert hasattr(settings, 'credentials.key')
+    # assert hasattr(settings, 'credentials.token')
+    assert hasattr(settings, 'credentials')
+    assert hasattr(settings.credentials, 'key')
+    assert hasattr(settings.credentials, 'token')
