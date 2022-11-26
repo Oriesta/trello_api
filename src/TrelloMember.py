@@ -2,41 +2,40 @@ import requests
 import json
 import TrelloUtilities
 
-# # Uncomment me when ready to implement Member class
-# settings = TrelloUtilities.Settings()
 
-# class Member():
-
-#   def __init__(self):
+class Member():
     
-#     url = f"https://api.trello.com/1/members/{settings.userId}"
+    initialized = False
+    
+    def __init__(self):
 
-#     headers = {
-#       "Accept": "application/json"
-#     }
+        settings = TrelloUtilities.Settings()
+        url = f"https://api.trello.com/1/members/{settings.userId}"
+        
+        headers = {
+            "Accept": "application/json"
+            }
 
-#     query = {
-#       'key': settings.credentials.key,
-#       'token': settings.credentials.token
-#     }
+        query = {
+            'key': settings.credentials.key,
+            'token': settings.credentials.token
+            }
+            
+        response = requests.request(
+            "GET",
+            url,
+            headers=headers,
+            params=query
+            )
+        
+        if (response.status_code == 200):
+            #   self.data = json.loads(response.text)
+            self.__dict__.update(json.loads(response.text))
+            self.initialized = True
+        else:
+            print(f'Error: Failed to get member data. Request returned with response {response.status_code}.')
+            self.data = None
 
-#     response = requests.request(
-#       "GET",
-#       url,
-#       headers=headers,
-#       params=query
-#     )
-
-#     if (response.status_code == 200):
-#       self.data = json.loads(response.text)
-#     else:
-#       print(f'Error: Failed to get member data. Request returned with response {response.status_code}.')
-#       self.data = None
-
-# # Uncomment me when ready to introduce Member class
-#   def keys(self):
-
-#     print(self.data.keys())
     
     
 '''
@@ -81,8 +80,3 @@ if __name__ == '__main__':
         # show results
         print(json.dumps(json.loads(response.text), sort_keys=True, indent=4, separators=(",", ": ")))
 '''
-
-# if __name__ == '__main__':
-
-#   member = Member()
-#   member.keys()
