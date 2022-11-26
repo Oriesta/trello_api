@@ -15,12 +15,37 @@ class Credentials():
     def __init__(self):
 
         # open secrets.json to get key and token
+        # Update this to use relative path
         if self.key == '' or self.token == '':
-            with open("../config/secrets.json", "r") as secrets_file:
+            with open("/home/oriesta/repos/trello_api/config/secrets.json", "r") as secrets_file:
 
                 secrets = json.load(secrets_file)
                 self.key = secrets['key']
                 self.token = secrets['token']
+
+class Settings():
+
+    userId = ''
+
+    def __init__(self):
+
+        self.credentials = Credentials()
+        
+        # open settings.json and get data
+        # TODO: Update this to use relative paths
+        with open("/home/oriesta/repos/trello_api/config/settings.json", "r") as settings_file:
+
+            # Current working code.  Remove once you automatically convert json string
+            # settings = json.load(settings_file)
+            # self.userId = settings['user_id']
+
+
+            self.__dict__.update(json.load(settings_file))
+
+
+
+
+    
 
 '''
 def get_user_id():
@@ -94,3 +119,6 @@ if __name__ == '__main__':
     credentials = Credentials()
     print(f'Key = {credentials.key}')
     print(f'Token =  {credentials.token}')
+
+    settings = Settings()
+    print(f'User ID = {settings.userId}')
