@@ -9,3 +9,4 @@ instantiate a Member object and initializes it from a Trello Member request
 def test_GetMember():
     member = Member()
     assert member.initialized == True
+    assert member.username == 'patrickfreel'

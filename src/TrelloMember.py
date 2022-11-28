@@ -1,6 +1,8 @@
-import requests
-import json
-import TrelloUtilities
+# import requests
+# import json
+# import TrelloUtilities
+
+from TrelloRequestFactory import TrelloRequestFactory
 
 
 class Member():
@@ -9,32 +11,10 @@ class Member():
     
     def __init__(self):
 
-        settings = TrelloUtilities.Settings()
-        url = f"https://api.trello.com/1/members/{settings.userId}"
-        
-        headers = {
-            "Accept": "application/json"
-            }
-
-        query = {
-            'key': settings.credentials.key,
-            'token': settings.credentials.token
-            }
-            
-        response = requests.request(
-            "GET",
-            url,
-            headers=headers,
-            params=query
-            )
-        
-        if (response.status_code == 200):
-            #   self.data = json.loads(response.text)
-            self.__dict__.update(json.loads(response.text))
+        member_data = TrelloRequestFactory().getMember()
+        if member_data != '':
             self.initialized = True
-        else:
-            print(f'Error: Failed to get member data. Request returned with response {response.status_code}.')
-            self.data = None
+            self.__dict__.update(member_data)
 
     
     
