@@ -5,6 +5,7 @@ from TrelloRequest import TrelloRequest
 
 baseUrl = f'https://api.trello.com'
 memberRequest = f'/1/members'
+boardRequest = f'/1/boards'
 
 
 class TrelloRequestFactory():
@@ -25,3 +26,21 @@ class TrelloRequestFactory():
         url = f'{baseUrl}{memberRequest}/{self.settings.userId}'
         request = TrelloRequest(url=url, params=self.query, headers=self.headers)
         return request.get()
+
+    def getBoardNames(self):
+
+        url = f'{baseUrl}{memberRequest}/{self.settings.userId}/boards'
+
+        # Need to create a custom query so that only the board name is returned
+        # along with the board IDs
+        query = {
+            'fields': 'name',
+            'key': self.query['key'],
+            'token': self.query['token']
+        }
+
+        # Create a Trello Request and get response
+        request = TrelloRequest(url=url,params=query,headers=self.headers)
+        response = request.get()
+
+        return response
