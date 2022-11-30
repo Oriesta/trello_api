@@ -1,8 +1,13 @@
 # This code sample uses the 'requests' library:
 # http://docs.python-requests.org
+'''
 import requests
 import json
+'''
+from TrelloRequestFactory import TrelloRequestFactory
+import json
 
+'''
 def get_lists_from_board(key, token, board_id):
     
     url = f'https://api.trello.com/1/boards/{board_id}/lists'
@@ -22,7 +27,19 @@ def get_lists_from_board(key, token, board_id):
         print(f'ERROR: get_lists_from_board() returned error {response.status_code}')
     else:
         return json.loads(response.text)
+'''
 
+def updateBoardFile():
 
-    # debug print
-    # print(json.dumps(json.loads(response.text), sort_keys=True, indent=4, separators=(",", ": ")))
+    # Get the list 
+    boards = TrelloRequestFactory().getBoardNames()
+
+    # Write the file as long as it was update
+    if boards:
+
+        # Save the list as a json formatted file
+        boards_json = json.dumps(boards, indent=4)
+
+        # TODO: Make this relative path
+        with open('/home/oriesta/repos/trello_api/data/boards.json','w') as boards_file:
+            boards_file.write(boards_json)
