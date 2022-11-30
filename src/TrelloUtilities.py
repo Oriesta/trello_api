@@ -17,12 +17,11 @@ class Credentials():
         # open secrets.json to get key and token
         # Update this to use relative path
         if self.key == '' or self.token == '':
+
             with open("/home/oriesta/repos/trello_api/config/secrets.json", "r") as secrets_file:
 
                 self.__dict__.update(json.load(secrets_file))
-                # secrets = json.load(secrets_file)
-                # self.key = secrets['key']
-                # self.token = secrets['token']
+
 
 class Settings():
 
