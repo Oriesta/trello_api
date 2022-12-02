@@ -15,6 +15,11 @@ class Member():
         if member_data != '':
             self.initialized = True
             self.__dict__.update(member_data)
+    
+    def getBoards(self):
+
+        self.boards = TrelloRequestFactory().getBoardNames()
+        return self.boards
 
     
     

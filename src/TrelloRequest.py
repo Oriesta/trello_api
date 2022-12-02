@@ -17,7 +17,6 @@ class TrelloRequest():
     def get(self):
 
         response = requests.get(url=self.url, params=self.params, headers=self.headers)
-        print(f'Response URL: {response.url}')
         if response.status_code == 200:
             data = json.loads(response.text)
         else:

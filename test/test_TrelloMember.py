@@ -10,3 +10,11 @@ def test_getMember():
     member = Member()
     assert member.initialized == True
     assert member.username == 'patrickfreel'
+
+def test_getMemberBoards():
+    member = Member()
+    boards = member.getBoards()
+    if boards:
+        assert True == True
+    else:
+        assert True == False
