@@ -1,7 +1,7 @@
 from ..src import TrelloUtilities
 from ..src.TrelloRequest import TrelloRequest
 
-def test_GetTrelloRequest():
+def test_getTrelloRequest():
 
     # create URL
     settings = TrelloUtilities.Settings()
