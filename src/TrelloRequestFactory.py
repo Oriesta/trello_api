@@ -27,6 +27,7 @@ class TrelloRequestFactory():
         request = TrelloRequest(url=url, params=self.query, headers=self.headers)
         return request.get()
 
+<<<<<<< HEAD
     def getBoard(self, id):
 
         # GET /1/boards/{id}
@@ -34,6 +35,8 @@ class TrelloRequestFactory():
         request = TrelloRequest(url=url, params=self.query, headers=self.headers)
         return request.get()
 
+=======
+>>>>>>> main
     def getBoardNames(self):
 
         url = f'{baseUrl}{memberRequest}/{self.settings.userId}/boards'
