@@ -7,6 +7,18 @@ import json
 from TrelloRequestFactory import TrelloRequestFactory
 import json
 
+class TrelloBoard:
+
+    def __init__(self, id):
+
+        # Send a board request to the Trello API
+        data = TrelloRequestFactory.getBoard(id)
+        
+        # Add the data to the object
+        if data:
+            self.__dict__.update(data)
+
+
 '''
 def get_lists_from_board(key, token, board_id):
     
