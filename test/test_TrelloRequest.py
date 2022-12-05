@@ -1,10 +1,10 @@
-from ..src import TrelloUtilities
+from ..src.TrelloUtilities import Settings
 from ..src.TrelloRequest import TrelloRequest
 
 def test_getTrelloRequest():
 
     # create URL
-    settings = TrelloUtilities.Settings()
+    settings = Settings()
     url = f"https://api.trello.com/1/members/{settings.userId}"
 
     # create headers

@@ -1,3 +1,1 @@
-import sys
-sys.path.append('./src/')
-sys.path.append('./config/')
+print(f'trello_api.__init__.py has been called')

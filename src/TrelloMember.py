@@ -1,8 +1,5 @@
-# import requests
-# import json
-# import TrelloUtilities
 
-from TrelloRequestFactory import TrelloRequestFactory
+from .TrelloRequestFactory import TrelloRequestFactory
 
 
 class Member():
