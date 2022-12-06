@@ -1,6 +1,5 @@
-from TrelloUtilities import Settings
-from TrelloRequest import TrelloRequest
-
+from .TrelloUtilities import Settings
+from .TrelloRequest import TrelloRequest
 
 
 baseUrl = f'https://api.trello.com'

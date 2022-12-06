@@ -1,6 +1,3 @@
-# import sys
-# sys.path.append('../src')
-# import TrelloUtilities
 from ..src import TrelloUtilities
 
 '''
