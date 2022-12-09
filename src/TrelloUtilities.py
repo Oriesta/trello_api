@@ -18,7 +18,8 @@ class Credentials():
         # Update this to use relative path
         if self.key == '' or self.token == '':
 
-            with open("/home/oriesta/repos/trello_api/config/secrets.json", "r") as secrets_file:
+            # with open("/home/oriesta/repos/trello_api/config/secrets.json", "r") as secrets_file:
+            with open("config/secrets.json", "r") as secrets_file:
 
                 self.__dict__.update(json.load(secrets_file))
 
@@ -33,7 +34,8 @@ class Settings():
         
         # open settings.json and get data
         # TODO: Update this to use relative paths
-        with open("/home/oriesta/repos/trello_api/config/settings.json", "r") as settings_file:
+        # with open("/home/oriesta/repos/trello_api/config/settings.json", "r") as settings_file:
+        with open("config/settings.json", "r") as settings_file:
 
             self.__dict__.update(json.load(settings_file))
 
