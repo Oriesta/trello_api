@@ -4,15 +4,17 @@
 import requests
 import json
 '''
-from TrelloRequestFactory import TrelloRequestFactory
+from .TrelloRequestFactory import TrelloRequestFactory
 import json
 
 class TrelloBoard:
 
     def __init__(self, id):
 
+        request_factory = TrelloRequestFactory()
+
         # Send a board request to the Trello API
-        data = TrelloRequestFactory.getBoard(id)
+        data = request_factory.getBoard(id)
         
         # Add the data to the object
         if data:

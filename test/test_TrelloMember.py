@@ -7,9 +7,14 @@ Purpose: This function is meant to be called by pytest and verifies the ability 
 instantiate a Member object and initializes it from a Trello Member request
 '''
 def test_getMember():
+
     member = Member()
-    assert member.initialized == True
+
+    # Verify the member's user name was retrieved
     assert member.username == 'patrickfreel'
+
+    # Verify the member's board list was returned
+    
 
 def test_getMemberBoards():
     member = Member()

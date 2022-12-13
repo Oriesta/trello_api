@@ -1,24 +1,29 @@
-
 from .TrelloRequestFactory import TrelloRequestFactory
+from .TrelloBoard import TrelloBoard
 
 
 class Member():
     
-    initialized = False
-    
+    # Constructor
     def __init__(self):
 
-        member_data = TrelloRequestFactory().getMember()
+        # Add Trello member data to the object
+        request_factory = TrelloRequestFactory()
+        member_data = request_factory.getMember()
         if member_data != '':
             self.initialized = True
             self.__dict__.update(member_data)
-    
-    def getBoards(self):
+        
+            # Get all boards for member
+            self.boards = dict()
+            for id in self.idBoards:
+                board = TrelloBoard(id=id)
+                self.boards[board.name] = board
 
-        self.boards = TrelloRequestFactory().getBoardNames()
+    def getBoards(self):
+        
         return self.boards
 
-    
     
 '''
 import json
@@ -47,18 +52,4 @@ def get_boards_for_member(key, token, user_id):
     )
 
     return json.loads(response.text)
-
-if __name__ == '__main__':
-    
-    # get authentication params
-    with open("config/secrets.json","r") as f:
-        
-        # load authentication parameters
-        secrets = json.load(f)
-
-        # get boards
-        response = get_boards_for_member(secrets)
-
-        # show results
-        print(json.dumps(json.loads(response.text), sort_keys=True, indent=4, separators=(",", ": ")))
 '''
